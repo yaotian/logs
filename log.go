@@ -1,33 +1,34 @@
 package logs
 
 import (
-	"fmt"
-	seelog "github.com/cihub/seelog"
+    "fmt"
+
+    seelog "github.com/cihub/seelog"
 )
 
 var Logger seelog.LoggerInterface
 
 func init() {
-	DisableLog()
-	loadAppConfig()
+    DisableLog()
+    loadAppConfig()
 }
 
 // DisableLog disables all library log output
 func DisableLog() {
-	Logger = seelog.Disabled
+    Logger = seelog.Disabled
 }
 
 // UseLogger uses a specified seelog.LoggerInterface to output library log.
 // Use this func if you are using Seelog logging system in your app.
 func UseLogger(newLogger seelog.LoggerInterface) {
-	Logger = newLogger
+    Logger = newLogger
 }
 
 func loadAppConfig() {
-	logger, err := seelog.LoggerFromConfigAsFile("log.xml")
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	UseLogger(logger)
+    logger, err := seelog.LoggerFromConfigAsFile("conf/log.xml")
+    if err != nil {
+        fmt.Println(err)
+        return
+    }
+    UseLogger(logger)
 }

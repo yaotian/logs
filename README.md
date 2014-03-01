@@ -1,6 +1,9 @@
 log
 ===
 
+
+将配置文件放入conf/ 目录下
+
 log for go project
 
 
